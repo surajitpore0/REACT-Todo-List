@@ -32,21 +32,30 @@ export default class App extends Component {
         });
     };
 
-    handleList = (e) => {
-        console.log("clear list");
-    };
-    handleList = () => {
-        console.log("clear list");
+    clearList = () => {
+        this.setState({
+            items: [],
+        });
     };
     handleDelete = (id) => {
-        console.log(`handle edit ${id}`);
+        const filteredItems = this.state.items.filter((item) => item.id !== id);
+        this.setState({
+            items: filteredItems,
+        });
     };
     handleEdit = (id) => {
-        console.log(`handle edit ${id}`);
+        const filteredItems = this.state.items.filter((item) => item.id !== id);
+        const selectedItem = this.state.items.find((item) => item.id === id);
+        this.setState({
+            items: filteredItems,
+            item: selectedItem.title,
+            id: id,
+            editItem: true,
+        });
     };
 
     render() {
-        console.log(this.state);
+        // console.log(this.state);
         return (
             <div>
                 <div className="container">
